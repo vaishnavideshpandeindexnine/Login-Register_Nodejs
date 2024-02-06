@@ -6,14 +6,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
     <link rel="stylesheet" href="../public/login.css">
+    <style>
+        /* Reset some default styles */
+body, h2, form, input, a {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and text color for the body */
+body {
+    background-color: #f8f8f8;
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Style the login container */
+form {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+   
+}
+
+/* Style the form elements */
+h2 {
+    color: #0066cc;
+    font-size:30px;
+    margin-bottom: 20px;
+    background-color: rgb(254, 219, 78);
+    padding: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: rgb(254, 219, 78);
+    color: #0066cc;
+    cursor: pointer;
+    border: none;
+}
+
+input[type="submit"]:hover {
+    background-color: rgb(248, 182, 208);
+}
+
+/* Style the "Create a New Account" link */
+a {
+    margin-top: 10px;
+    color: #890032;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+    </style>
 </head>
 <body>
     <h2>LOGIN</h2>
     <form action="/login" method="POST">
-    <input type="text" name="name" placeholder="Enter Name">
+    <div class="container">
+        <input type="text" name="name" placeholder="Enter Name">
     <input type="password" name="password" placeholder="Enter Password">
     <input type="submit">
     </form>
-    <a href="/signup">Create a New Account!</a>
+    <a href="/signup">Create a New Account!</a></div>
+    
 </body>
 </html>

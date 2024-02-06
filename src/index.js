@@ -4,12 +4,15 @@ const path = require("path");
 const hbs = require("hbs");
 const collection = require("./mongodb");
 
-const templatePath = path.join(__dirname, '../templates');
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.json());
+/*By default the name of the template file will be views so 
+instead of that we want the file name to be template */
+const templatePath = path.join(__dirname, '../templates');
+//app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.json()); //to get hbs and mongodb files connected
 app.set("view engine", "hbs");
-app.set("views", templatePath);
+app.set("views", templatePath); //to change the name of the file
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
@@ -20,17 +23,20 @@ app.get("/signup", (req, res) => {
     res.render("signup");
 });
 
-
+/*//(async=>meaning it can perform tasks concurrently without
+ blocking the execution of the rest of the program.) */
 app.post("/signup", async (req, res) => {
     console.log("Received a POST request to /signup");
-
+// Handle signup logic here, e.g., insert data into MongoD
     const data = {
-        name: req.body.name,
+        name: req.body.name,  
         password: req.body.password
     };
-
+//fills the data in mongodb
     await collection.insertMany([data]);
-
+/* working with mongodb we need to use async and await functions. 
+It allows you to write code that appears synchronous while still taking
+ advantage of the asynchronous nature of certain tasks */
     res.redirect("/home");
 });
 
@@ -52,7 +58,7 @@ app.post("/login", async (req, res) => {
 
 
 app.get("/home", (req, res) => {
-    // Handle rendering of the home page
+    // Redirect to the home page
     res.render("home");
 });
 
